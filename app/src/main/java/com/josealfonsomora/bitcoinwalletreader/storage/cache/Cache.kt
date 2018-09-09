@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface Cache<Key : Any, Value : Any> {
     fun get(key: Key): Single<Value?>
-    fun set(key: Key, value: Value): Completable
+    fun set(value: Value): Completable
 }

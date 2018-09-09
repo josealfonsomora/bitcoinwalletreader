@@ -9,9 +9,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class Transactions @Inject constructor(val prefs: SharedPreferences) : Cache<String, Transaction> {
+class TransactionsCache @Inject constructor(val prefs: SharedPreferences) : Cache<String, Transaction> {
 
-    val gson = GsonBuilder().create()
+    private val gson = GsonBuilder().create()!!
 
     override fun get(key: String): Single<Transaction?> {
         val transactionJson = prefs.getString(key, "")
@@ -19,7 +19,7 @@ class Transactions @Inject constructor(val prefs: SharedPreferences) : Cache<Str
         return Single.just(transaction)
     }
 
-    override fun set(key: String, value: Transaction) = Completable.fromAction {
-        prefs.edit().putString(key, gson.toJson(value, Transaction::class.java)).apply()
+    override fun set(value: Transaction) = Completable.fromAction {
+        prefs.edit().putString(value.hash, gson.toJson(value, Transaction::class.java)).apply()
     }
 }

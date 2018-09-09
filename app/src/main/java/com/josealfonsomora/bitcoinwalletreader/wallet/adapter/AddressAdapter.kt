@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.josealfonsomora.bitcoinwalletreader.R
 import com.josealfonsomora.bitcoinwalletreader.api.Address
 
-class AddressAdapter(val items: List<Address>) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+class AddressAdapter(private val items: List<Address>) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items.get(position))
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -17,8 +17,8 @@ class AddressAdapter(val items: List<Address>) : RecyclerView.Adapter<AddressAda
     override fun getItemCount() = items.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val addressTextView: TextView = view.findViewById(R.id.address)
-        val balanceTextView: TextView = view.findViewById(R.id.balance)
+        private val addressTextView: TextView = view.findViewById(R.id.address)
+        private val balanceTextView: TextView = view.findViewById(R.id.balance)
 
         fun bind(address: Address) {
             addressTextView.text = address.address

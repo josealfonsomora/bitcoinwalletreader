@@ -28,14 +28,12 @@ class WalletPresenter @Inject constructor(
                 .observeOn(uiScheduler)
                 .subscribe(
                         {
-                            view?.showBalance(it.walletInfo.finalBalance)
-                            view?.showAddresses(it.addresses)
+                            it.walletInfo?.let { view?.showBalance(it.finalBalance) }
+                            it.addresses?.let { view?.showAddresses(it) }
                         },
                         {
                             Log.e("WalletActivity", it.message)
                         }
                 )
     }
-
-
 }
