@@ -1,10 +1,11 @@
 package com.josealfonsomora.bitcoinwalletreader.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.centralway.numbrs.core.di.qualifiers.IoScheduler
-import com.centralway.numbrs.core.di.qualifiers.TransactionsPreferences
 import com.centralway.numbrs.core.di.qualifiers.UiScheduler
 import com.josealfonsomora.bitcoinwalletreader.MainApplication
+import com.josealfonsomora.bitcoinwalletreader.storage.cache.TransactionsCache
 import dagger.Module
 import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -42,10 +43,13 @@ class AppModule {
     @Provides
     fun provideUiScheduler() = AndroidSchedulers.mainThread()
 
-    @TransactionsPreferences
+
     @Singleton
     @Provides
     fun provideTransactionsPreferences(context: Context) =
             context.getSharedPreferences("cache_transactions", Context.MODE_PRIVATE)
 
+    @Singleton
+    @Provides
+    fun providesTransactionsCache(preferences: SharedPreferences) = TransactionsCache(prefs = preferences)
 }
