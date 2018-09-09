@@ -2,7 +2,7 @@ package com.josealfonsomora.bitcoinwalletreader.wallet
 
 import com.josealfonsomora.bitcoinwalletreader.api.Address
 import com.josealfonsomora.bitcoinwalletreader.api.WalletInfo
-import com.josealfonsomora.bitcoinwalletreader.api.WalletResponse
+import com.josealfonsomora.bitcoinwalletreader.api.Wallet
 import com.josealfonsomora.bitcoinwalletreader.repositories.WalletRepository
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
@@ -20,7 +20,7 @@ class WalletPresenterTest {
     }
     private val view: WalletView = mock()
 
-    private val walletResponseMock: WalletResponse = mock {
+    private val walletResponseMock: Wallet = mock {
         on { walletInfo }.thenReturn(walletInfoMock)
         on { addresses }.thenReturn(walletAddressesList)
     }

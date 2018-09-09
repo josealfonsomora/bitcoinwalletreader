@@ -1,7 +1,7 @@
 package com.josealfonsomora.bitcoinwalletreader.repositories
 
 import com.josealfonsomora.bitcoinwalletreader.api.BlockchainService
-import com.josealfonsomora.bitcoinwalletreader.api.WalletResponse
+import com.josealfonsomora.bitcoinwalletreader.api.Wallet
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 
 class WalletRepositoryTest {
 
-    private val walletMock: WalletResponse = mock()
+    private val walletMock: Wallet = mock()
     private val serviceMock: BlockchainService = mock {
         on { getWallet(any()) }.thenReturn(Observable.just(walletMock))
     }
