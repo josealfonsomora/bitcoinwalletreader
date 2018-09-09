@@ -1,6 +1,6 @@
 package com.josealfonsomora.bitcoinwalletreader.repositories
 
-import com.josealfonsomora.bitcoinwalletreader.api.Transaction
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
 import com.josealfonsomora.bitcoinwalletreader.storage.cache.Cache
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock

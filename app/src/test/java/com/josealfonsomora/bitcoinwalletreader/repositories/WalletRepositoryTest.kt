@@ -1,7 +1,7 @@
 package com.josealfonsomora.bitcoinwalletreader.repositories
 
 import com.josealfonsomora.bitcoinwalletreader.api.BlockchainService
-import com.josealfonsomora.bitcoinwalletreader.api.Wallet
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Wallet
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable

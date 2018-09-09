@@ -29,7 +29,8 @@ class WalletPresenter @Inject constructor(
                 .subscribe(
                         {
                             it.walletInfo?.let { view?.showBalance(it.finalBalance) }
-                            it.addresses?.let { view?.showAddresses(it) }
+                            it.addresses.let { view?.showAddresses(it) }
+                            view?.showTransactions(it.transactions.sortedBy { it.time })
                         },
                         {
                             Log.e("WalletActivity", it.message)

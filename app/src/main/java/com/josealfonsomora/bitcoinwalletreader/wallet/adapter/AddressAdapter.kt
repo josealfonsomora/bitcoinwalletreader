@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.josealfonsomora.bitcoinwalletreader.R
-import com.josealfonsomora.bitcoinwalletreader.api.Address
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Address
 
 class AddressAdapter(private val items: List<Address>) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items.get(position))

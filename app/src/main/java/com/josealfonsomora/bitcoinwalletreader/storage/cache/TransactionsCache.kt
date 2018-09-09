@@ -2,7 +2,7 @@ package com.josealfonsomora.bitcoinwalletreader.storage.cache
 
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
-import com.josealfonsomora.bitcoinwalletreader.api.Transaction
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject

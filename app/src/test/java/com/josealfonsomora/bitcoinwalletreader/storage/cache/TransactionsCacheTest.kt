@@ -2,7 +2,7 @@ package com.josealfonsomora.bitcoinwalletreader.storage.cache
 
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
-import com.josealfonsomora.bitcoinwalletreader.api.Transaction
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

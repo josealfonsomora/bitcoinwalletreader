@@ -7,8 +7,8 @@ data class Wallet(
         @SerializedName("recommend_include_fee") val recommendIncludeFee: Boolean? = false,
         @SerializedName("info") val info: Info?,
         @SerializedName("wallet") val walletInfo: WalletInfo?,
-        @SerializedName("addresses") val addresses: List<Address>? = emptyList(),
-        @SerializedName("txs") val transactions: List<Transaction>? = emptyList()
+        @SerializedName("addresses") val addresses: List<Address> = emptyList(),
+        @SerializedName("txs") val transactions: List<Transaction> = emptyList()
 )
 
 data class Info(

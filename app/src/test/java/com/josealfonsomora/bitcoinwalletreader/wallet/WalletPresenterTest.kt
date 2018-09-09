@@ -1,8 +1,9 @@
 package com.josealfonsomora.bitcoinwalletreader.wallet
 
-import com.josealfonsomora.bitcoinwalletreader.api.Address
-import com.josealfonsomora.bitcoinwalletreader.api.WalletInfo
-import com.josealfonsomora.bitcoinwalletreader.api.Wallet
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Address
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
+import com.josealfonsomora.bitcoinwalletreader.domain.models.Wallet
+import com.josealfonsomora.bitcoinwalletreader.domain.models.WalletInfo
 import com.josealfonsomora.bitcoinwalletreader.repositories.WalletRepository
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test
 class WalletPresenterTest {
     private val walletBalance: Double = 1234.0
     private val walletAddressesList: List<Address> = emptyList()
+    private val walletTransactions: List<Transaction> = emptyList()
 
     private val walletInfoMock: WalletInfo = mock {
         on { finalBalance }.thenReturn(walletBalance)
@@ -39,5 +41,12 @@ class WalletPresenterTest {
 
         verify(view).showAddresses(walletAddressesList)
         verify(view).showBalance(walletBalance)
+    }
+
+    @Test
+    fun `wallet transactions are loadded`() {
+        presenter.bind(view)
+
+        verify(view).showTransactions(walletTransactions)
     }
 }
