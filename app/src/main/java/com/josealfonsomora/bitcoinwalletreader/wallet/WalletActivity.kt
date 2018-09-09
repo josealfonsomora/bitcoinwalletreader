@@ -7,12 +7,13 @@ import com.josealfonsomora.bitcoinwalletreader.R
 import com.josealfonsomora.bitcoinwalletreader.databinding.ActivityWalletBinding
 import com.josealfonsomora.bitcoinwalletreader.domain.models.Address
 import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
+import com.josealfonsomora.bitcoinwalletreader.mvp.BaseActivity
+import com.josealfonsomora.bitcoinwalletreader.transactionDetail.TransactionDetailActivity
 import com.josealfonsomora.bitcoinwalletreader.wallet.adapter.AddressAdapter
 import com.josealfonsomora.bitcoinwalletreader.wallet.adapter.TransactionAdapter
-import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class WalletActivity : DaggerAppCompatActivity(), WalletView {
+class WalletActivity : BaseActivity(), WalletView {
 
     @Inject
     lateinit var presenter: WalletPresenter
@@ -34,10 +35,15 @@ class WalletActivity : DaggerAppCompatActivity(), WalletView {
 
         binding.transactionsList.layoutManager = LinearLayoutManager(this)
         binding.transactionsList.setHasFixedSize(true)
+
     }
 
     override fun showTransactions(transactions: List<Transaction>) {
-        binding.transactionsList.adapter = TransactionAdapter(transactions)
+        val transactionAdapter = TransactionAdapter(transactions)
+        transactionAdapter.clicks.subscribe {
+            TransactionDetailActivity.launch(this, it.hash)
+        }
+        binding.transactionsList.adapter = transactionAdapter
     }
 
     override fun onStart() {
