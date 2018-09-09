@@ -34,7 +34,9 @@ class TransactionsCacheTest {
 
     private val transactionjson = gson.toJson(transaction, Transaction::class.java)
 
-    private val preferencesEditorMock: SharedPreferences.Editor = mock()
+    private val preferencesEditorMock: SharedPreferences.Editor = mock {
+        on { putString(any(), any()) }.thenReturn(it)
+    }
     private val preferencesMock: SharedPreferences = mock {
         on { edit() }.thenReturn(preferencesEditorMock)
         on { getString(any(), any()) }.thenReturn(transactionjson)
@@ -53,7 +55,7 @@ class TransactionsCacheTest {
 
     @Test
     fun `set saves Transaction object as json string in shared preferences`() {
-        cache.set(transaction).test()
+        cache.set(transaction)
 
         verify(preferencesEditorMock).putString(transaction.hash, transactionjson)
     }
