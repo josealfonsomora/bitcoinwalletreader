@@ -36,7 +36,7 @@ class TransactionDetailActivity : BaseActivity(), TransactionDetailView {
     }
 
     override fun showTransaction(transaction: Transaction?) {
-
+        transaction?.let { viewModel.setTransaction(it) }
     }
 
     companion object {

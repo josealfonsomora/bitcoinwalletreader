@@ -8,4 +8,5 @@
     <string name="fees_label">fees:</string>
     <string name="sent_label">sent:</string>
     <string name="received_label">received:</string>
+    <string name="transaction">Transaction</string>
 </resources>
