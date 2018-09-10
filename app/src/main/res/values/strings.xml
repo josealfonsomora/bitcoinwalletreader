@@ -4,4 +4,8 @@
     <string name="balance">Balance</string>
     <string name="addresses">Addresses</string>
     <string name="transactions">Transactions</string>
+    <string name="your_bitcoin_wallet">Your Bitcoin Wallet</string>
+    <string name="fees_label">fees:</string>
+    <string name="sent_label">sent:</string>
+    <string name="received_label">received:</string>
 </resources>

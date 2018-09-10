@@ -2,11 +2,13 @@ package com.josealfonsomora.bitcoinwalletreader.wallet
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.josealfonsomora.bitcoinwalletreader.R
 import com.josealfonsomora.bitcoinwalletreader.databinding.ActivityWalletBinding
 import com.josealfonsomora.bitcoinwalletreader.domain.models.Address
 import com.josealfonsomora.bitcoinwalletreader.domain.models.Transaction
+import com.josealfonsomora.bitcoinwalletreader.extensions.toBitcoinString
 import com.josealfonsomora.bitcoinwalletreader.mvp.BaseActivity
 import com.josealfonsomora.bitcoinwalletreader.transactionDetail.TransactionDetailActivity
 import com.josealfonsomora.bitcoinwalletreader.wallet.adapter.AddressAdapter
@@ -33,13 +35,14 @@ class WalletActivity : BaseActivity(), WalletView {
         binding.addressList.layoutManager = LinearLayoutManager(this)
         binding.addressList.setHasFixedSize(true)
 
+        binding.transactionsList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         binding.transactionsList.layoutManager = LinearLayoutManager(this)
         binding.transactionsList.setHasFixedSize(true)
 
     }
 
     override fun showTransactions(transactions: List<Transaction>) {
-        val transactionAdapter = TransactionAdapter(transactions)
+        val transactionAdapter = TransactionAdapter(this, transactions)
         transactionAdapter.clicks.subscribe {
             TransactionDetailActivity.launch(this, it.hash)
         }
@@ -56,7 +59,7 @@ class WalletActivity : BaseActivity(), WalletView {
     }
 
     override fun showBalance(finalBalance: Double) {
-        viewModel.balance.set(finalBalance.toString())
+        viewModel.balance.set(finalBalance.toBitcoinString())
     }
 
     override fun onStop() {
