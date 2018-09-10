@@ -2,7 +2,6 @@ package com.josealfonsomora.bitcoinwalletreader.domain.models
 
 import com.google.gson.annotations.SerializedName
 
-
 data class Wallet(
         @SerializedName("recommend_include_fee") val recommendIncludeFee: Boolean? = false,
         @SerializedName("info") val info: Info?,
@@ -32,7 +31,7 @@ data class Block(
         @SerializedName("block_index") val index: Long,
         @SerializedName("hash") val hash: String,
         @SerializedName("height") val blockHeight: Int,
-        @SerializedName("time") val blockTime: Int
+        @SerializedName("time") val blockTime: Long
 )
 
 data class Address(
@@ -62,12 +61,12 @@ data class Transaction(
         @SerializedName("weight") val weight: Int,
         @SerializedName("fee") val fee: Double,
         @SerializedName("relayed_by") val relayedBy: String,
-        @SerializedName("lock_time") val lockTime: Int,
-        @SerializedName("tx_index") val index: Long,
+        @SerializedName("lock_time") val lockTime: Long,
+        @SerializedName("tx_index") val index: Int,
         @SerializedName("double_spend") val doubleSpend: Boolean,
-        @SerializedName("result") val result: Int,
-        @SerializedName("balance") val balance: Int,
-        @SerializedName("time") val time: Int,
+        @SerializedName("result") val result: Double,
+        @SerializedName("balance") val balance: Double,
+        @SerializedName("time") val time: Long,
         @SerializedName("block_height") val blockHeight: Int,
         @SerializedName("inputs") val ins: List<TransactionIn>,
         @SerializedName("out") val outs: List<TransactionOut>

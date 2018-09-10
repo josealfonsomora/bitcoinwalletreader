@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.josealfonsomora.bitcoinwalletreader.R
 import com.josealfonsomora.bitcoinwalletreader.domain.models.Address
+import com.josealfonsomora.bitcoinwalletreader.extensions.toBitcoinString
 
 class AddressAdapter(private val items: List<Address>) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items.get(position))
@@ -22,7 +23,7 @@ class AddressAdapter(private val items: List<Address>) : RecyclerView.Adapter<Ad
 
         fun bind(address: Address) {
             addressTextView.text = address.address
-            balanceTextView.text = address.finalBalance.toString()
+            balanceTextView.text = address.finalBalance.toBitcoinString()
         }
     }
 }
